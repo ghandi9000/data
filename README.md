@@ -1,29 +1,21 @@
-Project Template
-================
+Datasets used for bc/moose analysis
+===================================
 
-Description
+Hazard Analysis
+---------------
 
-Dependencies
-------------
+### hazards-bc-firs
+Hazard analysis with BC data.  Contains only live doug firs with bole volume growth >= 0.
 
-Other projects/scripts required (i.e functions, neighborhood-models)
-
-* [other project 1](http://github.com/ghandi9000/) 
-* [other project 2](http://github.com/ghandi9000/)
-
-Data
-----
-
-What datasets are required
+### corrplots
+Keeps track of with plots are correlated during rGR computation.
 
 Directory Layout
 ----------------
 
-* data-prep, data-trans contain scripts to clean and perform manipulations such as transformation between wide/long or constructing size classes from continuous variables.
-* functions.R stores store user-defined functions
-* etc.
+* data-prep
+* data-trans
+* data
 
 References
 ----------
-
-Papers, codes
