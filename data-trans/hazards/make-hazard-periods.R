@@ -45,5 +45,6 @@ toKeep <- c("install","plot","time","hazPeriod","elev","aspect","tag","id","spec
 hazards <- hazards[,names(hazards) %in% toKeep]
 
 ## write data
-write.csv(hazards, "~/work/data/data/hazards/hazards-bc-firs-final.csv", row.names=FALSE)
+write.csv(hazards, "~/work/data/data/hazards/hazards-bc-firs-final.csv", row.names=FALSE,
+          na = ".")
 
