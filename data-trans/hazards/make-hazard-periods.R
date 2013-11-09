@@ -44,6 +44,10 @@ toKeep <- c("install","plot","time","hazPeriod","elev","aspect","tag","id","spec
 ## slim data down
 hazards <- hazards[,names(hazards) %in% toKeep]
 
+## rename
+names(hazards) <- gsub("sdp.hazard", "sdp", names(hazards))
+names(hazards) <- gsub("si.hazard", "si", names(hazards))
+
 ## write data
 write.csv(hazards, "~/work/data/data/hazards/hazards-bc-firs-final.csv", row.names=FALSE,
           na = ".")
