@@ -1,6 +1,5 @@
 ### read in datasets applicable to allometry project
 # moosilauke data
-source("C:/Users/Noah/Dropbox/Noah/Sources/settings.R")
 pp <- read.csv("C:/Users/Noah/Dropbox/Noah/Allometry/allometry.csv")
 
 # doug fir data, first version
