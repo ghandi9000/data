@@ -10,8 +10,8 @@ yrs <- c(86, 87, 98, 10)
 checkCols(pp, cols, yrs) ## returns columns that arent present
 
 ## rename columns that have been changed
-changed <- c("ebv","EHTTCR")
-replacements <- c("BV","HT")
+changed <- c("ebv","ht","n$")
+replacements <- c("BV","HT","")
 for (i in 1:length(changed))
     names(pp) <- gsub(changed[i], replacements[i], names(pp))
 checkCols(pp, cols, yrs) ## recheck cols

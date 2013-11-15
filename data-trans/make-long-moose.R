@@ -14,8 +14,11 @@ missing <- checkCols(pp, cols, yrs)
 pp <- addDummies(pp, missing)
 
 ## transform to long
-long <- makeLong(pp, cols, times)
+long <- makeLong(pp, cols, yrs)
 
 ## remove rows that have NA for all time periods (DBH and HT)
-tst <- removeEmpty(long, ns, yrs)
-nrow(subset(long, is.na(dbh) & is.na(ht) & is.na(ba) & is.na(bv)))
+ns <- c("dbh", "ht", "ba", "bv")
+long <- removeEmpty(long, ns, yrs)
+
+## write data
+write.csv(long, "~/work/data/data/growth/moose-long.csv", row.names = FALSE)
