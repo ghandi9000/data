@@ -21,4 +21,4 @@ ns <- c("dbh", "ht", "ba", "bv")
 long <- removeEmpty(long, ns, yrs)
 
 ## write data
-write.csv(long, "~/work/data/data/growth/moose-long.csv", row.names = FALSE)
+write.csv(long, "~/work/data/data/moose-long.csv", row.names = FALSE)
