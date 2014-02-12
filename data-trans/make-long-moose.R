@@ -2,11 +2,12 @@
 source("~/work/functions/functions-datatrans.R")
 ## source("~/work/data/data-prep/read-moose.R")
 ## source("~/work/data/data-prep/clean-moose.R")
-pp <- read.csv("~/work/data/data/growth/moose-wide.csv")
+pp <- read.csv("~/work/data/data/moose-wide.csv")
 
 ## columns to transform, years to use
 yrs <- c(86, 87, 98, 10)
-cols <- c("stat","decm","dbh","bv","ba","ht","cpos","dbhgrowth","bagrowth","bvgrowth",
+cols <- c("stat","decm","dbh","bv","ba","ht","eht","cht",
+          "cpos","dbhgrowth","bagrowth","bvgrowth",
           "htgrowth","priordbh","priorht","priorbv","priorba")
 
 ## find missing columns and make dummy columns with their names

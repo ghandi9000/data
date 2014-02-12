@@ -1,17 +1,18 @@
 ## Preparatory moosilauke data work
 ## NOTE: using estimated heights and bole volumes from boles project
 ## "~/work/boles/"
+## eht = height indicator column, 0 means not predicted
 source("~/work/data/data-prep/read-moose.R") ## calls data 'pp'
 source("~/work/functions/functions-datatrans.R")
 
 ## Check to see that we have the necessary columns
-cols <- c("DBH","HT","BV")
+cols <- c("DBH","HT","EHT","BV")
 yrs <- c(86, 87, 98, 10)
 checkCols(pp, cols, yrs) ## returns columns that arent present
 
 ## rename columns that have been changed
-changed <- c("ebv","ht","n$")
-replacements <- c("BV","HT","")
+changed <- c("MEBV","HTTCR")
+replacements <- c("BV","HT")
 for (i in 1:length(changed))
     names(pp) <- gsub(changed[i], replacements[i], names(pp))
 checkCols(pp, cols, yrs) ## recheck cols
@@ -98,14 +99,29 @@ pp[!is.na(pp$HT98),]$PRIORHT10 <- pp[!is.na(pp$HT98),]$HT98
 
 ## colnames to lower case and drop unwanted columns
 names(pp) <-tolower(names(pp))
+
+## separate cht8687 into cht86 and cht87:
+## plots 1-12 have cht86 and 13-24 have cht87
+pp$cht86 <- ifelse(pp$pplot < 16, pp$cht8687, NA)
+pp$cht87 <- ifelse(pp$pplot > 15, pp$cht8687, NA)
+
 yrs <- c(86, 87, 98, 10)
 toKeep <- c("pplot","splot","tag","spec","yrmort","elev","elevcl","asp","aspcl",
-            "bqudx","bqudy","soilcl","slopcl",
+            "bqudx","bqudy","soilcl","slopcl", paste0("cht",yrs),
             paste0("stat",yrs), paste0("dbh",yrs), paste0("bv",yrs), paste0("ba",yrs),
-            paste0("ht",yrs), paste0("decm",yrs), paste0("cpos",yrs),
+            paste0("ht",yrs), paste0("eht",yrs), paste0("decm",yrs), paste0("cpos",yrs),
             paste0("dbhgrowth",yrs), paste0("htgrowth",yrs), paste0("priordbh",yrs),
             paste0("priorba",yrs), paste0("priorht",yrs), paste0("priorbv",yrs),
             paste0("bvgrowth",yrs))
 
 pp <- pp[,names(pp) %in% toKeep]
 write.csv(pp, "~/work/data/data/moose-wide.csv", row.names = FALSE)
+
+
+
+
+
+
+
+
+
