@@ -11,8 +11,8 @@ yrs <- c(86, 87, 98, 10)
 checkCols(pp, cols, yrs) ## returns columns that arent present
 
 ## rename columns that have been changed
-changed <- c("MEBV","HTTCR")
-replacements <- c("BV","HT")
+changed <- c("HTTCR", "ebv")
+replacements <- c("HT", "BV")
 for (i in 1:length(changed))
     names(pp) <- gsub(changed[i], replacements[i], names(pp))
 checkCols(pp, cols, yrs) ## recheck cols
@@ -111,7 +111,7 @@ toKeep <- c("pplot","splot","tag","spec","yrmort","elev","elevcl","asp","aspcl",
             paste0("stat",yrs), paste0("dbh",yrs), paste0("bv",yrs), paste0("ba",yrs),
             paste0("ht",yrs), paste0("eht",yrs), paste0("decm",yrs), paste0("cpos",yrs),
             paste0("dbhgrowth",yrs), paste0("htgrowth",yrs), paste0("priordbh",yrs),
-            paste0("priorba",yrs), paste0("priorht",yrs), paste0("priorbv",yrs),
+            paste0("priorba",yrs), paste0("bagrowth",yrs), paste0("priorht",yrs), paste0("priorbv",yrs),
             paste0("bvgrowth",yrs))
 
 pp <- pp[,names(pp) %in% toKeep]
