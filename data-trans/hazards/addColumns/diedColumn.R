@@ -20,13 +20,13 @@ bc1$si.hazard <- as.numeric(factor(bc1$si.hazard))
 
 
 ## Add doug firs that died back into the dataset
-died <- bc1[bc1$spec == "FD" & bc1$stat == "DEAD",]
-bc <- merge(bc, died, all = TRUE)
+## died <- bc1[bc1$spec == "FD" & bc1$stat == "DEAD",]
+## bc <- merge(bc, died, all = TRUE)
 
 ## create a column to determine if a tree died during a hazard period
 ##  (0 didn't die, 1 did die)
-bc$died <- ifelse (bc$stat == "DEAD", 1, 0)
-nrow(subset(bc, time == 5 & stat == "DEAD"))
+## bc$died <- ifelse (bc$stat == "DEAD", 1, 0)
+## nrow(subset(bc, time == 5 & stat == "DEAD"))
 
 ## overwrite data
 write.csv(bc, "~/work/data/data/hazards/hazards-bc-firs.csv", row.names = FALSE)

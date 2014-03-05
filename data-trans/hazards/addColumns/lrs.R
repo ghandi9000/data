@@ -22,7 +22,7 @@ bc1 <- bc1[!is.na(bc1$stat) & !is.na(bc1$bvgrowth) &
            bc1$spec == "FD" & bc1$bvgrowth >= 0,]
 bc1 <- bc1[order(bc1$install, bc1$plot, bc1$time, bc1$id),]
 bc <- bc[order(bc$install, bc$plot, bc$time, bc$id),]
-bc$lrs <- bc1$lrs
+bc$LRS <- bc1$lrs
 
 ## write data
 write.csv(bc, "~/work/data/data/hazards/hazards-bc-firs.csv", row.names=FALSE)
