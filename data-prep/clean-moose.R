@@ -107,7 +107,7 @@ pp$cht87 <- ifelse(pp$pplot > 15, pp$cht8687, NA)
 
 yrs <- c(86, 87, 98, 10)
 toKeep <- c("pplot","splot","tag","spec","yrmort","elev","elevcl","asp","aspcl",
-            "bqudx","bqudy","soilcl","slopcl", paste0("cht",yrs),
+            "bqudx","bqudy","soilcl","slopcl","slope8687", paste0("cht",yrs),
             paste0("stat",yrs), paste0("dbh",yrs), paste0("bv",yrs), paste0("ba",yrs),
             paste0("ht",yrs), paste0("eht",yrs), paste0("decm",yrs), paste0("cpos",yrs),
             paste0("dbhgrowth",yrs), paste0("htgrowth",yrs), paste0("priordbh",yrs),
