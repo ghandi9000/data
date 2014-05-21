@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>These scripts assign z-values to each plant in the plots</title>
+<title>These scripts compute altitude values (z-values)</title>
 
 <style type="text/css">
 body, td {
@@ -146,25 +146,33 @@ hr {
 </head>
 
 <body>
-<h2>These scripts assign z-values to each plant in the plots</h2>
+<h2>These scripts compute altitude values (z-values)</h2>
 
 <p>Z-values are altitude values relative to the center of the plots.</p>
 
-<h3>Methods to calculate z-values</h3>
+<h3>Method to calculate z-values</h3>
 
 <ol>
-<li>\( z = r\cos(\theta_B) \tan(\theta_S) \), where \( \theta_B \) is the angle between the slope aspect and the vector from a given point through the origin, and \( \theta_S \) is the slope angle.
+<li>\( z = r\cos(\theta_B) \tan(\theta_S) \), where \( \theta_B \) is the angle between the slope aspect and the vector from a given point through the origin, \( \theta_S \) is the slope angle. and \( r \) is the distance from the origin to the point.
 
 <ul>
 <li>\( \theta_B \) is calculated from dot product of the projection of the slope aspect onto the 2d plot, \( a \), and the vector from a given point through the origin, \( b \):</li>
 <li>\( \theta_B = cos^{-1} ( \frac{ a \cdot b } {|a||b| } ) \)</li>
 <li>Using this method, if \( \theta_B > 90^{\circ} \), then \( z \) will be a negative value, ie. downslope from the center of the plot.</li>
 </ul></li>
+<li>Notes
+
+<ul>
+<li>Due to machine precision error with the arccos function, \( \frac{a \cdot b}{|a||b|} \) was rounded to 15 digits (machine precision ~ \( 2e-16 \)).  When \( a \cdot b \) is very close to \( |a||b| \), (i.e. they are the same in reality), the fraction is sometimes computed to be slightly greater than 1 on the machine which leads to a NAN result when passed to the arccos function in R.</li>
+</ul></li>
 </ol>
 
 <h3>Moosilauke</h3>
 
-<p>On Moosilauke, each plot has an azimuth and slope along the azimuth.  Z-value are calculated from this information.</p>
+<ul>
+<li>On Moosilauke, each plot has an azimuth and slope calculate along the azimuth.  Z-value are calculated from these values in addition to plant x,y coordinates.</li>
+<li>The y-axis is oriented in the northeast direction for Moosilauke plots.</li>
+</ul>
 
 </body>
 
